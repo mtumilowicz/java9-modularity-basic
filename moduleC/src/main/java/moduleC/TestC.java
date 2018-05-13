@@ -17,18 +17,7 @@ public class TestC {
         System.out.println("Hello from moduleC!");
 
         ExportB.export();
-//        InternalB internalB; // no access
-        
-        /*
-        because:
-        moduleB is required by moduleC,
-        moduleA.export is exported by moduleA,
-        moduleA is required transitive by module B
-        we have access to classes from moduleA.export
-        remember to add dependency moduleA to moduleC
-         */
         ExportA.export();
-//        InternalA internalA; // no access
 //        ExportAOnlyToB exportAOnlyToB; // no access
     }
 }
