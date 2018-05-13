@@ -11,11 +11,11 @@ The main goal of this project is to explore basic features of
 _Reference_: [Java 9 Modularity](https://www.amazon.com/Java-Modularity-Developing-Maintainable-Applications/dp/1491954167)  
 
 ## project structure
-`moduleA`, `moduleB`, `moduleC` - exploring `exports`, `exports X to Y`,
-`requires`, `requires transitive`.  
+* **moduleA**, **moduleB**, **moduleC** - exploring `exports`, 
+`exports X to Y`, `requires`, `requires transitive`.
 
-`openModule`, `ordinaryModule`, `reflection` - exporing `open module` 
-and correlate `modularity` with `reflection`.
+* **openModule**, **ordinaryModule**, **reflection** - exporing 
+`open module` and correlate `modularity` with `reflection`.
 
 ## project description
 Assume that we analyze `module-info.java` under module `X`
