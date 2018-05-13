@@ -7,11 +7,6 @@ public class Test {
         try {
             Invoker.invokeStatic(new Test(), "hello");
         } catch (IllegalAccessException e) {
-            /*
-            java.lang.IllegalAccessException: class Invoker (in module reflection) cannot access class 
-            Test (in module ordinaryModule) because module ordinaryModule does not export ordinaryModule 
-            to module reflection
-             */
             System.out.println(e);
         }
     }
