@@ -35,5 +35,3 @@ while strong encapsulation is still upheld at compile-time.
 This property holds regardless of whether any packages are exported.  
 `Deep reflection` is used by many libraries. For example, `Spring` or 
 `Hibernate` inject values into nonpublic fields of classes.
-
-## project content
