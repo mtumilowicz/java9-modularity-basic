@@ -140,7 +140,7 @@ module ordinaryModule {
     requires reflection;
 }
 ```
-Running `ordinaryModule.Test` class will cause printing to console:
+Running `ordinaryModule.Test` class will cause exception:
 ```
 java.lang.IllegalAccessException: class Invoker (in module reflection) cannot access class 
 Test (in module ordinaryModule) because module ordinaryModule does not export ordinaryModule 
