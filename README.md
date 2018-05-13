@@ -37,7 +37,7 @@ This property holds regardless of whether any packages are exported.
 `Hibernate` inject values into nonpublic fields of classes.
 
 ## project content
-**moduleA**
+### **moduleA**
 ```
 module moduleA {
     exports moduleA.export;
@@ -55,7 +55,7 @@ to it. For example if you uncomment the line in `moduleB.TestB`:
 ```
 project will not compile.  
 
-**moduleB**
+### **moduleB**
 ```
 module moduleB {
     requires transitive moduleA;
@@ -78,7 +78,7 @@ Note that we have to put `moduleA` also in `pom.xml` (without `pom.xml`
 we should add `moduleA` to `module-path` of `moduleB` otherwise project 
 will not compile).
 
-**moduleC**
+### **moduleC**
 ```
 module moduleC {
     requires moduleB;
