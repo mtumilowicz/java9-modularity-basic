@@ -37,7 +37,7 @@ This property holds regardless of whether any packages are exported.
 `Hibernate` inject values into nonpublic fields of classes.
 
 ## project content
-### **moduleA**
+### moduleA
 ```
 module moduleA {
     exports moduleA.export;
@@ -54,8 +54,7 @@ to it. For example if you uncomment the line in `moduleB.TestB`:
 //        InternalA internalA; // no access
 ```
 project will not compile.  
-
-### **moduleB**
+### moduleB
 ```
 module moduleB {
     requires transitive moduleA;
@@ -78,7 +77,7 @@ Note that we have to put `moduleA` also in `pom.xml` (without `pom.xml`
 we should add `moduleA` to `module-path` of `moduleB` otherwise project 
 will not compile).
 
-### **moduleC**
+### moduleC
 ```
 module moduleC {
     requires moduleB;
@@ -112,3 +111,42 @@ exported only to `moduleB` (`moduleB.TestB`)
 ```
 ExportA.export();
 ```
+____
+### reflection
+Module with only one simple class `Invoker` to invoker static methods:
+```
+public static void invokeStatic(Object obj, String methodName) throws IllegalAccessException {
+    try {
+        obj.getClass().getMethod(methodName).invoke(null);
+    } catch (InvocationTargetException | NoSuchMethodException e) {
+        throw new RuntimeException(e);
+    }
+}
+```
+
+### openModule
+```
+open module openModule {
+    requires reflection;
+}
+```
+Running `openModule.Test` class will cause printing to console: "Hello 
+from openModule!" - because of that the modul is marked as `open` in the
+`module-info.java` file.
+
+### ordinaryModule
+```
+module ordinaryModule {
+    requires reflection;
+}
+```
+Running `ordinaryModule.Test` class will cause printing to console:
+```
+java.lang.IllegalAccessException: class Invoker (in module reflection) cannot access class 
+Test (in module ordinaryModule) because module ordinaryModule does not export ordinaryModule 
+to module reflection
+```
+
+## remarks
+* If we are using `maven` the file `module-info.java` should be added to
+* asd 
