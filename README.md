@@ -149,4 +149,12 @@ to module reflection
 
 ## remarks
 * If we are using `maven` the file `module-info.java` should be added to
-* asd 
+the `Sources Root` (`src/main/java`)
+* Note that if we put file `moduleA.TestA` on the same level as 
+`module-info.java` compilation will succedd, but running main method 
+will result in `error`:
+```
+Error occurred during initialization of boot layer
+java.lang.module.FindException: Error reading module: path\moduleB\target\classes
+Caused by: java.lang.module.InvalidModuleDescriptorException: TestB.class found in top-level directory (unnamed package not allowed in module)
+```
