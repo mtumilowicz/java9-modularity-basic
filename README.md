@@ -50,10 +50,10 @@ so package:
 * `moduleA.exportOnlyToB` will be exported only to `moduleB`
 * `moduleA.internal` is encapsulated & other modules don't have access 
 to it. For example if you uncomment the line in `moduleB.TestB`:
-```
-//        InternalA internalA; // no access
-```
-project will not compile.  
+    ```
+    //        InternalA internalA; // no access
+    ```
+    project will not compile.  
 ### moduleB
 ```
 module moduleB {
@@ -73,7 +73,7 @@ so (we don't repeat keyword defined in previous step):
 * `moduleB` is reporting dependency on `moduleA`, what is more - every
 further module that will be requiring `moduleB` will get access to 
 `moduleA` also.  
-Note that we have to put `moduleA` also in `pom.xml` (without `pom.xml` 
+* Note that we have to put `moduleA` also in `pom.xml` (without `pom.xml` 
 we should add `moduleA` to `module-path` of `moduleB` otherwise project 
 will not compile).
 
@@ -102,15 +102,15 @@ so:
 `moduleB`) we have to also add it to `pom.xml` - if not, nothing more 
 should be done.
 * note that if you uncomment the line in `moduleC.TestC`:
-```
-//        ExportAOnlyToB exportAOnlyToB; // no access
-```
+    ```
+    //        ExportAOnlyToB exportAOnlyToB; // no access
+    ```
 project will not compile, so package `ExportAOnlyToB` was correctly 
 exported only to `moduleB` (`moduleB.TestB`)
 * in `moduleC.TestC` we use transitive dependency on `moduleA`:
-```
-ExportA.export();
-```
+    ```
+    ExportA.export();
+    ```
 ____
 ### reflection
 Module with only one simple class `Invoker` to invoker static methods:
@@ -153,8 +153,8 @@ the `Sources Root` (`src/main/java`)
 * Note that if we put file `moduleA.TestA` on the same level as 
 `module-info.java` compilation will succedd, but running main method 
 will result in `error`:
-```
-Error occurred during initialization of boot layer
-java.lang.module.FindException: Error reading module: path\moduleB\target\classes
-Caused by: java.lang.module.InvalidModuleDescriptorException: TestB.class found in top-level directory (unnamed package not allowed in module)
-```
+    ```
+    Error occurred during initialization of boot layer
+    java.lang.module.FindException: Error reading module: path\moduleB\target\classes
+    Caused by: java.lang.module.InvalidModuleDescriptorException: TestB.class found in top-level directory (unnamed package not allowed in module)
+    ```
